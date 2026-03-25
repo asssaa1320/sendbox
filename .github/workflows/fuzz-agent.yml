@@ -62,7 +62,7 @@ jobs:
       - name: Initialize Foundry project if needed
         run: |
           if [ ! -f "foundry.toml" ]; then
-            forge init --no-git --no-commit fuzz_target
+            forge init --no-git fuzz_target
             cp -r fuzz_target/* .
             rm -rf fuzz_target
           fi
