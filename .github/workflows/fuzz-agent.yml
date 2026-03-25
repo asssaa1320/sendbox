@@ -1,0 +1,109 @@
+name: Smart Contract Fuzz Agent
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # كل 6 ساعات
+  push:
+    branches: [main]
+  workflow_dispatch:         # تشغيل يدوي
+
+jobs:
+  fuzz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340     # أقل من حد 6 ساعات بقليل
+
+    permissions:
+      contents: write        # لرفع الـ PoC artifacts
+
+    steps:
+      # ────────────────────────────────────────────
+      # 1. Checkout
+      # ────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ────────────────────────────────────────────
+      # 2. تثبيت Python
+      # ────────────────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          pip install requests
+
+      # ────────────────────────────────────────────
+      # 3. تثبيت Foundry (forge + cast + anvil)
+      # ────────────────────────────────────────────
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Verify Foundry installation
+        run: |
+          forge --version
+          cast --version
+          anvil --version
+
+      # ────────────────────────────────────────────
+      # 4. تثبيت Node.js (للـ Hardhat fallback)
+      # ────────────────────────────────────────────
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # ────────────────────────────────────────────
+      # 5. إعداد مشروع Foundry (لو مش موجود)
+      # ────────────────────────────────────────────
+      - name: Initialize Foundry project if needed
+        run: |
+          if [ ! -f "foundry.toml" ]; then
+            forge init --no-git --no-commit fuzz_target
+            cp -r fuzz_target/* .
+            rm -rf fuzz_target
+          fi
+
+      # ────────────────────────────────────────────
+      # 6. تشغيل الـ Fuzz Agent
+      # ────────────────────────────────────────────
+      - name: Run Fuzz Agent
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+        run: |
+          python fuzz_agent.py
+
+      # ────────────────────────────────────────────
+      # 7. رفع الـ PoC كـ Artifact
+      # ────────────────────────────────────────────
+      - name: Upload PoC artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fuzz-results-${{ github.run_id }}
+          path: |
+            poc/
+            fuzz_report.json
+          retention-days: 30
+          if-no-files-found: ignore
+
+      # ────────────────────────────────────────────
+      # 8. حفظ الـ PoC في الـ repo (اختياري)
+      # ────────────────────────────────────────────
+      - name: Commit PoC files if found
+        if: always()
+        run: |
+          git config user.name "fuzz-bot"
+          git config user.email "fuzz-bot@github.com"
+          if [ -d "poc" ] && [ "$(ls -A poc)" ]; then
+            git add poc/ fuzz_report.json || true
+            git commit -m "🐛 Fuzz PoC - Run #${{ github.run_id }}" || true
+            git push || true
+          fi
