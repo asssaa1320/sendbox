@@ -1,0 +1,734 @@
+{
+  "runs": [
+    {
+      "iteration": 1,
+      "seed": 92573773,
+      "returncode": 1,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "is_crash": true,
+      "stdout": "Compiling 1 files with Solc 0.7.6\nCompiling 22 files with Solc 0.8.34\nSolc 0.7.6 finished in 4.74ms\nSolc 0.8.34 finished in 562.50ms\nCompiler run successful!\n\nRan 2 tests for test/FuzzRound_1.t.sol:FuzzRound_1\n[FAIL: Transfer failed; counterexample: calldata=0xf6924c9d0000000000000000000000000000000000000000000000000000000000000130 args=[304]] testFuzz_Withdraw(uint96) (runs: 0, \u03bc: 0, ~: 0)\n[PASS] test_Reentrancy() (gas: 68307)\nSuite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 4.83ms (4.68ms CPU time)\n\nRan 1 test suite in 9.89ms (4.83ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)\n\nFailing tests:\nEncountered 1 failing test in test/FuzzRound_1.t.sol:FuzzRound_1\n[FAIL: Transfer failed; counterexample: calldata=0xf6924c9d0000000000000000000000000000000000000000000000000000000000000130 args=[304]] testFuzz_Withdraw(uint96) (runs: 0, \u03bc: 0, ~: 0)\n\nEncountered a total of 1 failing tests, 1 tests succeeded\n\nTip: Run `forge test --rerun` to retry only the 1 failed test\n\nFuzz seed: 0xa0a9152c1073bff97f1b1be751bfb809bc3b6fbfdfd0c83bb0f87386542c120f (use `--fuzz-seed` to reproduce)\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\n"
+    },
+    {
+      "iteration": 2,
+      "seed": 3019786928,
+      "returncode": 1,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "is_crash": true,
+      "stdout": "Compiling 1 files with Solc 0.8.34\nSolc 0.8.34 finished in 509.68ms\nCompiler run successful!\n\nRan 2 tests for test/FuzzRound_2.t.sol:FuzzRound_2\n[FAIL: Transfer failed; counterexample: calldata=0xf6924c9d0000000000000000000000000000000000000000000000000000000000000972 args=[2418]] testFuzz_Withdraw(uint96) (runs: 0, \u03bc: 0, ~: 0)\n[PASS] test_Reentrancy() (gas: 51470)\nSuite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 3.43ms (3.15ms CPU time)\n\nRan 1 test suite in 8.27ms (3.43ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)\n\nFailing tests:\nEncountered 1 failing test in test/FuzzRound_2.t.sol:FuzzRound_2\n[FAIL: Transfer failed; counterexample: calldata=0xf6924c9d0000000000000000000000000000000000000000000000000000000000000972 args=[2418]] testFuzz_Withdraw(uint96) (runs: 0, \u03bc: 0, ~: 0)\n\nEncountered a total of 1 failing tests, 1 tests succeeded\n\nTip: Run `forge test --rerun` to retry only the 1 failed test\n\nFuzz seed: 0xb324734ab86b40cac9b8cfe1b68e168e2309e03dccc38d2f5290a1c4ea104330 (use `--fuzz-seed` to reproduce)\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\n"
+    },
+    {
+      "iteration": 3,
+      "seed": 3544799066,
+      "returncode": 1,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "is_crash": true,
+      "stdout": "Compiling 1 files with Solc 0.8.34\nSolc 0.8.34 finished in 503.00ms\nCompiler run successful!\n\nRan 2 tests for test/FuzzRound_3.t.sol:FuzzRound_3\n[FAIL: Transfer failed; counterexample: calldata=0xf6924c9d000000000000000000000000000000000000000000000000000006a19b9abe49 args=[7291170111049 [7.291e12]]] testFuzz_Withdraw(uint96) (runs: 0, \u03bc: 0, ~: 0)\n[FAIL: No balance] test_Reentrancy() (gas: 16422)\nSuite result: FAILED. 0 passed; 2 failed; 0 skipped; finished in 4.57ms (4.39ms CPU time)\n\nRan 1 test suite in 9.26ms (4.57ms CPU time): 0 tests passed, 2 failed, 0 skipped (2 total tests)\n\nFailing tests:\nEncountered 2 failing tests in test/FuzzRound_3.t.sol:FuzzRound_3\n[FAIL: Transfer failed; counterexample: calldata=0xf6924c9d000000000000000000000000000000000000000000000000000006a19b9abe49 args=[7291170111049 [7.291e12]]] testFuzz_Withdraw(uint96) (runs: 0, \u03bc: 0, ~: 0)\n[FAIL: No balance] test_Reentrancy() (gas: 16422)\n\nEncountered a total of 2 failing tests, 0 tests succeeded\n\nTip: Run `forge test --rerun` to retry only the 2 failed tests\n\nFuzz seed: 0xfacece84ab3eadb7d397a32b277ecc80d458418736d040094bbfa7d4d78ccf5f (use `--fuzz-seed` to reproduce)\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\n"
+    },
+    {
+      "iteration": 4,
+      "seed": 746193303,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_4.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 5,
+      "seed": 2386852291,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_4.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_5.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 6,
+      "seed": 169765467,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_4.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_5.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 7,
+      "seed": 2150706197,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_4.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_5.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_7.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 8,
+      "seed": 2588852102,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_4.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_5.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_7.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_8.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 9,
+      "seed": 3255825272,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_4.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_5.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_7.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_8.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_9.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 10,
+      "seed": 2922281430,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_5.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_7.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_8.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_9.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 11,
+      "seed": 959199970,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_11.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_7.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_8.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_9.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 12,
+      "seed": 4248285144,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_11.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_7.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_8.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_9.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 13,
+      "seed": 2079354348,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_11.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_13.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_8.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_9.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 14,
+      "seed": 3132667961,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_11.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_13.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_14.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_9.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 15,
+      "seed": 1512276264,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_11.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_13.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_14.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 16,
+      "seed": 3050526213,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_11.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_13.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_14.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_16.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 17,
+      "seed": 2220513620,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_13.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_14.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_16.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 18,
+      "seed": 3140168157,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_13.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_14.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_16.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 19,
+      "seed": 3528778472,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_14.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_16.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 20,
+      "seed": 945920574,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_16.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_20.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 21,
+      "seed": 3089875943,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_16.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_20.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 22,
+      "seed": 1018254100,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_20.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_22.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 23,
+      "seed": 4151987258,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_20.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_22.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_23.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 24,
+      "seed": 3369166154,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_20.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_22.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_23.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_24.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 25,
+      "seed": 1321984767,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_20.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_22.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_23.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_24.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 26,
+      "seed": 1416620736,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_22.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_23.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_24.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_26.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 27,
+      "seed": 1894506859,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_22.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_23.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_24.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_26.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_27.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 28,
+      "seed": 485817081,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_23.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_24.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_26.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_27.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_28.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 29,
+      "seed": 2833254779,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_24.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_26.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_27.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_28.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 30,
+      "seed": 1736967174,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_26.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_27.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_28.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 31,
+      "seed": 2072367712,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_26.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_27.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_28.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_31.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 32,
+      "seed": 3741149407,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_27.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_28.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_31.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 33,
+      "seed": 1149676560,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_28.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_31.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 34,
+      "seed": 2808985924,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_31.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 35,
+      "seed": 1197502258,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_31.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_35.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 36,
+      "seed": 1295072910,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_31.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_35.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 37,
+      "seed": 3441044838,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_35.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 38,
+      "seed": 4050675658,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_35.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 39,
+      "seed": 3549074295,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_35.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 40,
+      "seed": 117301529,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_35.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 41,
+      "seed": 2094451599,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_41.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 42,
+      "seed": 2528967597,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_41.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 43,
+      "seed": 3046645101,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_41.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 44,
+      "seed": 1000933151,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_41.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_44.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 45,
+      "seed": 1246349639,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_41.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_44.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 46,
+      "seed": 3803588305,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_41.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_44.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 47,
+      "seed": 2916415654,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_44.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_47.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 48,
+      "seed": 100012914,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_44.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_47.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 49,
+      "seed": 1804168310,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_44.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_47.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 50,
+      "seed": 1557354268,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_47.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_50.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 51,
+      "seed": 2003239486,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_47.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_50.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 52,
+      "seed": 369441918,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_47.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_50.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_52.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 53,
+      "seed": 2130332868,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_50.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_52.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 54,
+      "seed": 2438218003,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_50.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_52.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_54.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 55,
+      "seed": 4150438966,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_50.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_52.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_54.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_55.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 56,
+      "seed": 470764057,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_52.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_54.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_55.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 57,
+      "seed": 4147741571,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_52.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_54.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_55.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 58,
+      "seed": 2752320228,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_54.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_55.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_58.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 59,
+      "seed": 3232823753,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_54.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_55.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_58.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 60,
+      "seed": 3307296597,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_55.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_58.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_60.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 61,
+      "seed": 1507307827,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_58.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_60.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 62,
+      "seed": 1821501579,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_58.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_60.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_62.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 63,
+      "seed": 3134087854,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_58.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_60.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_62.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 64,
+      "seed": 2815601958,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_60.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_62.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 65,
+      "seed": 471370722,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_60.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_62.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 66,
+      "seed": 541023903,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_62.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_66.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 67,
+      "seed": 2489033995,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_62.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_66.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 68,
+      "seed": 2980731136,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_66.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_68.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 69,
+      "seed": 3698064664,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_66.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_68.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_69.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 70,
+      "seed": 1036644313,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_66.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_68.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_69.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 71,
+      "seed": 4076021531,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_66.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_68.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_69.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_71.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 72,
+      "seed": 58058464,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_68.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_69.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_71.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_72.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 73,
+      "seed": 2952798052,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_68.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_69.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_71.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_72.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_73.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 74,
+      "seed": 3821115800,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_69.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_71.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_72.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_73.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_74.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 75,
+      "seed": 550715568,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_71.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_72.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_73.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_74.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 76,
+      "seed": 3906649937,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_71.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_72.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_73.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_74.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_76.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 77,
+      "seed": 868958308,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_72.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_73.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_74.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_76.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 78,
+      "seed": 3389624682,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_73.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_74.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_76.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 79,
+      "seed": 1667490654,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_74.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_76.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    },
+    {
+      "iteration": 80,
+      "seed": 2198604035,
+      "returncode": 1,
+      "bugs": [],
+      "is_crash": false,
+      "stdout": "Compiler run failed:\nError (6160): Wrong argument count for function call: 1 arguments given but expected 0.\n  --> test/FuzzRound_76.t.sol:22:20:\n   |\n22 |         attacker = new Attacker(address(bank));\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n",
+      "stderr": "Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. \n\nError: Compilation failed\n"
+    }
+  ],
+  "total_bugs": 3,
+  "start": "2026-03-25T23:58:04.558492",
+  "end": "2026-03-25T23:58:46.021944",
+  "total_iters": 80
+}
