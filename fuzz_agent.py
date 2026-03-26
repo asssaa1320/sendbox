@@ -1,11 +1,7 @@
-"""
-fuzz_agent.py — Smart Contract Fuzzing Agent
-يعمل داخل GitHub Actions بدون Anthropic API key.
-يستخدم Foundry (forge) لاختبار العقود الذكية.
-يرسل النتائج على Telegram فقط عند اكتشاف Bug/Crash.
-"""
+
 
 import os
+import re
 import json
 import random
 import subprocess
@@ -17,7 +13,7 @@ from pathlib import Path
 import requests
 
 # ─────────────────────────────────────────────
-# إعدادات من Environment Variables
+# إعدادات
 # ─────────────────────────────────────────────
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID   = os.environ.get("TELEGRAM_CHAT_ID", "")
@@ -27,63 +23,47 @@ GITHUB_SERVER_URL  = os.environ.get("GITHUB_SERVER_URL", "https://github.com")
 
 ARTIFACT_LINK = f"{GITHUB_SERVER_URL}/{GITHUB_REPO}/actions/runs/{GITHUB_RUN_ID}"
 
-MAX_ITERATIONS = 80          # حد الـ iterations داخل وقت الـ runner
-TIME_LIMIT_SEC = 18000       # 5 ساعات (أقل من 6h حد الـ runner)
+MAX_ITERATIONS = 80
+TIME_LIMIT_SEC = 18000
 POC_DIR        = Path("poc")
 REPORT_FILE    = Path("fuzz_report.json")
 
 
 # ─────────────────────────────────────────────
-# إرسال Telegram
+# Telegram
 # ─────────────────────────────────────────────
 def send_to_telegram(message: str, poc_file: Path | None = None) -> None:
-    """يرسل رسالة نصية + ملف PoC اختياري على Telegram."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-        print("[WARN] Telegram secrets غير موجودة، سيتم تخطي الإرسال.")
+        print("[WARN] Telegram secrets غير موجودة.")
         return
-
     base_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}"
-
     try:
-        # أرسل الرسالة النصية
         resp = requests.post(
             f"{base_url}/sendMessage",
-            json={
-                "chat_id": TELEGRAM_CHAT_ID,
-                "text": message,
-                "parse_mode": "Markdown",
-            },
+            json={"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "Markdown"},
             timeout=15,
         )
         resp.raise_for_status()
-        print("[INFO] تم إرسال إشعار Telegram.")
-
-        # أرسل الملف إذا وجد
         if poc_file and poc_file.exists():
             with open(poc_file, "rb") as f:
-                file_resp = requests.post(
+                requests.post(
                     f"{base_url}/sendDocument",
                     data={"chat_id": TELEGRAM_CHAT_ID},
                     files={"document": (poc_file.name, f, "text/plain")},
                     timeout=30,
-                )
-            file_resp.raise_for_status()
-            print(f"[INFO] تم رفع الملف: {poc_file.name}")
-
+                ).raise_for_status()
     except Exception as e:
-        print(f"[ERROR] فشل إرسال Telegram: {e}")
+        print(f"[ERROR] Telegram: {e}")
 
 
 # ─────────────────────────────────────────────
-# توليد العقود الذكية المختبَرة (Targets)
+# كتابة العقود المستهدفة
 # ─────────────────────────────────────────────
 def write_fuzz_contracts() -> None:
-    """يكتب عقود Solidity للـ fuzzing في مجلد src/."""
     src = Path("src")
     src.mkdir(exist_ok=True)
 
-    # عقد يحتوي على Reentrancy vulnerability
-    (src / "VulnerableBank.sol").write_text("""
+    (src / "VulnerableBank.sol").write_text("""\
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
@@ -94,200 +74,228 @@ contract VulnerableBank {
         balances[msg.sender] += msg.value;
     }
 
-    // ⚠️ Reentrancy vulnerability intentional for fuzzing
+    // ⚠️ Reentrancy: state update AFTER external call
     function withdraw() external {
         uint256 amount = balances[msg.sender];
         require(amount > 0, "No balance");
         (bool ok, ) = msg.sender.call{value: amount}("");
         require(ok, "Transfer failed");
-        balances[msg.sender] = 0;   // ← state update AFTER call
+        balances[msg.sender] = 0;
     }
 
-    function getBalance() external view returns (uint256) {
-        return address(this).balance;
-    }
+    receive() external payable {}
 }
 """)
-
-    # عقد يحتوي على Integer Overflow
-    (src / "UnsafeMath.sol").write_text("""
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.7.6;   // <0.8 → no built-in overflow check
-
-contract UnsafeMath {
-    uint256 public totalSupply;
-
-    function mint(uint256 amount) external {
-        totalSupply += amount;  // ⚠️ Overflow possible pre-0.8
-    }
-}
-""")
-
-    print("[INFO] كتابة عقود Solidity للاختبار.")
+    print("[INFO] تم كتابة العقود.")
 
 
 # ─────────────────────────────────────────────
-# توليد اختبارات Fuzz ديناميكية
+# توليد اختبار Fuzz لكل iteration
 # ─────────────────────────────────────────────
 def generate_fuzz_test(iteration: int, seed: int) -> Path:
-    """يولد ملف Solidity فuzz test جديد لكل iteration."""
     test_dir = Path("test")
     test_dir.mkdir(exist_ok=True)
 
+    random.seed(seed)
+    attack_depth   = random.randint(1, 5)
+    deposit_amount = random.choice([
+        "0.1 ether", "0.5 ether", "1 ether", "2 ether", "5 ether"
+    ])
+    use_reentrancy_attacker = random.random() > 0.4
+
     test_file = test_dir / f"FuzzRound_{iteration}.t.sol"
 
-    # Semantic mutations بناءً على الـ seed
-    random.seed(seed)
-    amount_range  = random.choice(["1 ether", "0.001 ether", "type(uint256).max", "0"])
-    attack_repeat = random.randint(1, 5)
-    use_reentrancy = random.random() > 0.5
+    if use_reentrancy_attacker:
+        attacker_code = f"""
+contract ReentrancyAttacker {{
+    VulnerableBank private bank;
+    uint8 private depth;
 
-    attacker_body = ""
-    if use_reentrancy:
-        attacker_body = f"""
-    uint8 private _depth;
-    VulnerableBank private _bank;
-
-    constructor(address bank) {{ _bank = VulnerableBank(bank); }}
+    constructor(address _bank) {{ bank = VulnerableBank(payable(_bank)); }}
 
     receive() external payable {{
-        if (_depth < {attack_repeat} && address(_bank).balance > 0) {{
-            _depth++;
-            _bank.withdraw();
+        if (depth < {attack_depth} && address(bank).balance >= 0.1 ether) {{
+            depth++;
+            bank.withdraw();
         }}
     }}
 
     function attack() external payable {{
-        _bank.deposit{{value: msg.value}}();
-        _bank.withdraw();
+        require(msg.value >= 0.1 ether, "Need ETH");
+        bank.deposit{{value: msg.value}}();
+        bank.withdraw();
     }}
-"""
-    else:
-        attacker_body = """
-    // Dummy attacker – no reentrancy
-    function attack() external payable {}
-"""
+}}"""
+        test_body = f"""
+    VulnerableBank     bank;
+    ReentrancyAttacker attacker;
 
-    test_file.write_text(f"""
+    function setUp() public {{
+        bank     = new VulnerableBank();
+        attacker = new ReentrancyAttacker(address(bank));
+        vm.deal(address(bank), 10 ether);
+        vm.deal(address(attacker), {deposit_amount});
+    }}
+
+    function test_ReentrancyDrain() public {{
+        uint256 bankBefore     = address(bank).balance;
+        uint256 deposited      = {deposit_amount};
+
+        attacker.attack{{value: deposited}}();
+
+        uint256 bankAfter      = address(bank).balance;
+        uint256 drainedFromBank = bankBefore > bankAfter ? bankBefore - bankAfter : 0;
+
+        // ✅ Invariant صحيح: ما سُرق لا يتجاوز ما أُودع
+        assertLe(
+            drainedFromBank,
+            deposited,
+            "REENTRANCY: attacker drained more than deposited!"
+        );
+    }}
+
+    function testFuzz_WithdrawAmount(uint96 amount) public {{
+        vm.assume(amount > 0.001 ether && amount <= 5 ether);
+        vm.deal(address(this), amount);
+        bank.deposit{{value: amount}}();
+        uint256 bankBefore = address(bank).balance;
+        bank.withdraw();
+        assertEq(address(bank).balance, bankBefore - amount, "Withdraw amount mismatch");
+    }}
+
+    receive() external payable {{}}"""
+    else:
+        attacker_code = ""
+        test_body = f"""
+    VulnerableBank bank;
+
+    function setUp() public {{
+        bank = new VulnerableBank();
+        vm.deal(address(this), 10 ether);
+    }}
+
+    function testFuzz_NormalWithdraw(uint96 amount) public {{
+        vm.assume(amount > 0.001 ether && amount <= 5 ether);
+        bank.deposit{{value: amount}}();
+        uint256 before = address(bank).balance;
+        bank.withdraw();
+        assertEq(address(bank).balance, before - amount, "Balance mismatch");
+    }}
+
+    receive() external payable {{}}"""
+
+    test_file.write_text(f"""\
 // SPDX-License-Identifier: MIT
-// Auto-generated fuzz test — Iteration {iteration} — Seed {seed}
+// Auto-generated — Iteration {iteration} — Seed {seed}
 pragma solidity ^0.8.20;
 
 import "forge-std/Test.sol";
 import "../src/VulnerableBank.sol";
 
-contract Attacker {{
-    {attacker_body}
-}}
+{attacker_code}
 
 contract FuzzRound_{iteration} is Test {{
-    VulnerableBank bank;
-    Attacker attacker;
-
-    function setUp() public {{
-        bank     = new VulnerableBank();
-        attacker = new Attacker(address(bank));
-        vm.deal(address(bank), 10 ether);
-        vm.deal(address(attacker), 1 ether);
-    }}
-
-    /// @notice Forge fuzz test: يجرب قيم عشوائية لـ amount
-    function testFuzz_Withdraw(uint96 amount) public {{
-        vm.assume(amount > 0 && amount <= 5 ether);
-        bank.deposit{{value: amount}}();
-        uint256 before = address(bank).balance;
-        bank.withdraw();
-        // Invariant: رصيد البنك لا يرتفع بعد السحب
-        assertLe(address(bank).balance, before, "Invariant violated: balance increased after withdraw");
-    }}
-
-    /// @notice اختبار ثابت لثغرة الـ Reentrancy
-    function test_Reentrancy() public {{
-        uint256 bankBefore = address(bank).balance;
-        attacker.attack{{value: {amount_range.replace("ether", " ether") if "max" not in amount_range else "1 ether"}}}();
-        // إذا سرق المهاجم أكثر مما أودع → bug
-        uint256 stolen = bankBefore - address(bank).balance;
-        uint256 deposited = 1 ether; // ما أودعه المهاجم
-        if (stolen > deposited) {{
-            emit log_named_uint("REENTRANCY BUG: stolen", stolen);
-            emit log_named_uint("deposited", deposited);
-            assertTrue(false, "Reentrancy: attacker drained more than deposited");
-        }}
-    }}
+{test_body}
 }}
 """)
     return test_file
 
 
 # ─────────────────────────────────────────────
-# تحليل نتيجة forge
+# ✅ تحليل دقيق — يعتمد على [FAIL] الفعلي
 # ─────────────────────────────────────────────
 def analyze_result(returncode: int, stdout: str, stderr: str) -> dict:
-    """يحلل مخرجات forge ويصنف النتيجة."""
+    """
+    forge يطبع:
+      [PASS]  عند نجاح الـ test  → ليس bug
+      [FAIL.  عند فشل الـ test   → bug حقيقي
+    نبحث عن [FAIL فقط وليس عن كلمات عشوائية.
+    """
     output = stdout + stderr
+
+    # ── هل فشل test فعلاً؟ ──
+    forge_failed  = bool(re.search(r"\[FAIL", output))
+    compile_error = bool(re.search(
+        r"(compiler error|error\[E|solc error|compilation failed)",
+        output, re.IGNORECASE
+    ))
+
     bugs = []
+    counterexample = ""
 
-    # أنماط الـ crashes/bugs
-    patterns = {
-        "Reentrancy":        "reentrancy",
-        "Overflow":          ["overflow", "arithmetic"],
-        "Assertion Failed":  ["assertion failed", "assertTrue(false", "invariant violated"],
-        "Panic":             "panic",
-        "Revert":            "revert",
-        "OutOfGas":          "out of gas",
-        "StorageCollision":  "storage collision",
-    }
+    if forge_failed and not compile_error:
+        # استخرج سياق الفشل فقط
+        fail_blocks = re.findall(r"\[FAIL[^\n]*\n(?:[^\n]*\n){0,5}", output)
+        fail_ctx    = " ".join(fail_blocks).lower()
 
-    for bug_type, keywords in patterns.items():
-        if isinstance(keywords, str):
-            keywords = [keywords]
-        for kw in keywords:
-            if kw.lower() in output.lower():
+        rules = {
+            "Reentrancy":       ["drained more than deposited", "reentrancy"],
+            "Integer Overflow":  ["overflow", "arithmetic"],
+            "Assertion Failed":  ["assertle failed", "asserteq failed", "assertgt failed"],
+            "Invariant Broken":  ["invariant", "balance mismatch", "withdraw amount mismatch"],
+            "Panic":             ["panic"],
+            "Revert":            ["revert"],
+            "OutOfGas":          ["out of gas"],
+        }
+        for bug_type, kws in rules.items():
+            if any(kw in fail_ctx for kw in kws):
                 bugs.append(bug_type)
-                break
 
-    is_crash = returncode != 0 and len(bugs) > 0
+        if not bugs:
+            bugs.append("Unknown Test Failure")
+
+        # استخرج counterexample
+        ce_match = re.search(r"Counterexample:.*?(?=\n\n|\Z)", output, re.DOTALL)
+        counterexample = ce_match.group(0).strip() if ce_match else ""
+
+    failed_count = len(re.findall(r"\[FAIL", output))
+    passed_count = len(re.findall(r"\[PASS\]", output))
+
     return {
-        "returncode": returncode,
-        "bugs":       list(set(bugs)),
-        "is_crash":   is_crash,
-        "stdout":     stdout[:3000],
-        "stderr":     stderr[:2000],
+        "returncode":     returncode,
+        "forge_failed":   forge_failed,
+        "compile_error":  compile_error,
+        "is_bug":         forge_failed and not compile_error,
+        "bugs":           list(set(bugs)),
+        "failed_tests":   failed_count,
+        "passed_tests":   passed_count,
+        "counterexample": counterexample,
+        "stdout":         stdout[:3000],
+        "stderr":         stderr[:1000],
     }
 
 
 # ─────────────────────────────────────────────
-# حفظ الـ PoC
+# حفظ PoC
 # ─────────────────────────────────────────────
 def save_poc(iteration: int, test_file: Path, result: dict) -> Path:
-    """يحفظ ملف PoC في مجلد poc/."""
     POC_DIR.mkdir(exist_ok=True)
     ts  = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
     poc = POC_DIR / f"poc_{ts}_iter{iteration}.txt"
+    poc.write_text(f"""# PoC Report — Iteration {iteration}
+# Timestamp     : {ts}
+# Bug Types     : {', '.join(result['bugs'])}
+# Failed Tests  : {result['failed_tests']}
+# Passed Tests  : {result['passed_tests']}
+# Counterexample: {result['counterexample']}
 
-    content = f"""# PoC — Iteration {iteration}
-# Timestamp: {ts}
-# Bugs Found: {', '.join(result['bugs'])}
-# Return Code: {result['returncode']}
+## Artifact Link
+{ARTIFACT_LINK}
 
 ## Test File
 {test_file.read_text()}
 
-## forge Output (stdout)
+## forge stdout
 {result['stdout']}
 
-## forge Output (stderr)
+## forge stderr
 {result['stderr']}
-
-## Artifact Link
-{ARTIFACT_LINK}
-"""
-    poc.write_text(content)
+""")
     return poc
 
 
 # ─────────────────────────────────────────────
-# Main Loop
+# Main
 # ─────────────────────────────────────────────
 def main() -> None:
     start_time = time.time()
@@ -296,28 +304,23 @@ def main() -> None:
     print(f"[START] Fuzz Agent — {datetime.utcnow().isoformat()}")
     print(f"[INFO]  Max iterations: {MAX_ITERATIONS} | Time limit: {TIME_LIMIT_SEC}s")
 
-    # كتابة العقود المستهدفة
     write_fuzz_contracts()
-
-    # إرسال إشعار بدء
     send_to_telegram(
         f"🚀 *Fuzz Agent Started*\n"
         f"Repo: `{GITHUB_REPO}`\n"
-        f"Run ID: `{GITHUB_RUN_ID}`\n"
-        f"Max Iterations: {MAX_ITERATIONS}\n"
-        f"[View Run]({ARTIFACT_LINK})"
+        f"Run: [View]({ARTIFACT_LINK})"
     )
 
     bugs_found = 0
 
     for i in range(1, MAX_ITERATIONS + 1):
-        elapsed = time.time() - start_time
-        if elapsed > TIME_LIMIT_SEC:
-            print(f"[INFO] Time limit reached after {elapsed:.0f}s — stopping.")
+        if time.time() - start_time > TIME_LIMIT_SEC:
+            print("[INFO] Time limit — stopping.")
             break
 
-        seed       = random.randint(0, 2**32)
-        test_file  = generate_fuzz_test(i, seed)
+        seed      = random.randint(0, 2**32)
+        test_file = generate_fuzz_test(i, seed)
+        elapsed   = time.time() - start_time
 
         print(f"\n[ITER {i:03d}/{MAX_ITERATIONS}] seed={seed} elapsed={elapsed:.0f}s")
 
@@ -325,68 +328,70 @@ def main() -> None:
             proc = subprocess.run(
                 ["forge", "test",
                  "--match-path", str(test_file),
-                 "--fuzz-runs", "256",      # عدد runs داخل كل fuzz test
-                 "-v"],                     # verbose
-                capture_output=True,
-                text=True,
-                timeout=120,               # max 2 دقيقة لكل iteration
+                 "--fuzz-runs", "512",
+                 "-vv"],
+                capture_output=True, text=True, timeout=120,
             )
         except subprocess.TimeoutExpired:
-            print(f"[WARN] Timeout في iteration {i}")
+            print(f"[WARN] Timeout iter {i}")
             continue
         except FileNotFoundError:
-            print("[ERROR] forge غير موجود — تحقق من تثبيت Foundry.")
+            print("[ERROR] forge not found")
             break
-        except Exception as e:
-            print(f"[ERROR] {e}")
-            continue
 
         result = analyze_result(proc.returncode, proc.stdout, proc.stderr)
-        report["runs"].append({"iteration": i, "seed": seed, **result})
 
-        if result["is_crash"]:
+        report["runs"].append({
+            "iteration":    i,
+            "seed":         seed,
+            "is_bug":       result["is_bug"],
+            "bugs":         result["bugs"],
+            "passed_tests": result["passed_tests"],
+            "failed_tests": result["failed_tests"],
+        })
+
+        if result["compile_error"]:
+            print(f"[ITER {i:03d}] ⚙️  Compile Error (not a bug)")
+
+        elif result["is_bug"]:
             bugs_found += 1
             report["total_bugs"] += 1
-            poc_file = save_poc(i, test_file, result)
+            poc_file  = save_poc(i, test_file, result)
+            bug_types = ", ".join(result["bugs"])
+            ce_info   = (f"\n*Counterexample:*\n`{result['counterexample'][:200]}`"
+                         if result["counterexample"] else "")
 
-            bug_types = ", ".join(result["bugs"]) or "Unknown"
             msg = (
-                f"🐛 *New Bug Found in Fuzzing!*\n\n"
+                f"🐛 *New Bug Found!*\n\n"
                 f"*Type:* `{bug_types}`\n"
                 f"*Iteration:* {i}/{MAX_ITERATIONS}\n"
                 f"*Seed:* `{seed}`\n"
+                f"*Failed Tests:* {result['failed_tests']}\n"
+                f"*Passed Tests:* {result['passed_tests']}\n"
+                f"{ce_info}\n"
                 f"*Repo:* `{GITHUB_REPO}`\n"
-                f"*Run:* [View Artifacts]({ARTIFACT_LINK})\n\n"
-                f"*forge output (tail):*\n```\n{proc.stdout[-600:]}\n```"
+                f"[View Artifacts]({ARTIFACT_LINK})"
             )
             send_to_telegram(msg, poc_file=poc_file)
-            print(f"[BUG] Found: {bug_types}")
+            print(f"[BUG ✓] {bug_types} | failed={result['failed_tests']} passed={result['passed_tests']}")
+
         else:
-            status = "✅ PASS" if proc.returncode == 0 else "⚠️ FAIL (no known bug)"
-            print(f"[ITER {i:03d}] {status}")
+            print(f"[ITER {i:03d}] ✅ PASS ({result['passed_tests']} tests)")
 
-        # نظف ملفات الاختبار القديمة لتوفير مساحة
         if i > 5:
-            old = Path("test") / f"FuzzRound_{i-5}.t.sol"
-            old.unlink(missing_ok=True)
+            (Path("test") / f"FuzzRound_{i-5}.t.sol").unlink(missing_ok=True)
 
-    # ─────────────────────────────────
-    # ملخص نهائي
-    # ─────────────────────────────────
-    report["end"]         = datetime.utcnow().isoformat()
-    report["total_iters"] = i
+    report["end"] = datetime.utcnow().isoformat()
     REPORT_FILE.write_text(json.dumps(report, indent=2))
 
-    summary = (
-        f"✅ *Fuzz Agent Finished*\n\n"
-        f"*Repo:* `{GITHUB_REPO}`\n"
+    send_to_telegram(
+        f"✅ *Fuzz Agent Finished*\n"
         f"*Iterations:* {i}/{MAX_ITERATIONS}\n"
-        f"*Bugs Found:* {bugs_found}\n"
+        f"*Real Bugs:* {bugs_found}\n"
         f"*Duration:* {(time.time()-start_time)/60:.1f} min\n"
-        f"[View Artifacts]({ARTIFACT_LINK})"
+        f"[Artifacts]({ARTIFACT_LINK})"
     )
-    send_to_telegram(summary)
-    print(f"\n[DONE] Bugs: {bugs_found} | Iterations: {i}")
+    print(f"\n[DONE] Real Bugs: {bugs_found} | Iterations: {i}")
 
 
 if __name__ == "__main__":
@@ -395,5 +400,5 @@ if __name__ == "__main__":
     except Exception:
         err = traceback.format_exc()
         print(f"[FATAL] {err}")
-        send_to_telegram(f"💥 *Fuzz Agent Crashed!*\n```\n{err[:500]}\n```")
+        send_to_telegram(f"💥 *Agent Crashed*\n```\n{err[:500]}\n```")
         raise
