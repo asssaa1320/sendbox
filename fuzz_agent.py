@@ -1,4 +1,8 @@
-
+"""
+fuzz_agent.py — Smart Contract Fuzzing Agent (نسخة مُصححة)
+دقة اكتشاف محسّنة: يعتمد على [FAIL] الفعلي من forge
+وليس مجرد وجود كلمة في النص.
+"""
 
 import os
 import re
@@ -248,8 +252,15 @@ def analyze_result(returncode: int, stdout: str, stderr: str) -> dict:
         ce_match = re.search(r"Counterexample:.*?(?=\n\n|\Z)", output, re.DOTALL)
         counterexample = ce_match.group(0).strip() if ce_match else ""
 
-    failed_count = len(re.findall(r"\[FAIL", output))
-    passed_count = len(re.findall(r"\[PASS\]", output))
+    # forge يطبع [FAIL مرتين: في النتيجة وفي "Failing tests:" section
+    # نعتمد على السطر الملخص: "N tests passed, M failed"
+    summary_match = re.search(r"(\d+) tests passed, (\d+) failed", output)
+    if summary_match:
+        passed_count = int(summary_match.group(1))
+        failed_count = int(summary_match.group(2))
+    else:
+        failed_count = len(re.findall(r"^\[FAIL", output, re.MULTILINE))
+        passed_count = len(re.findall(r"^\[PASS\]", output, re.MULTILINE))
 
     return {
         "returncode":     returncode,
