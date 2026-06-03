@@ -2,7 +2,23 @@
   "runs": [
     {
       "iteration": 1,
-      "seed": 2166642069,
+      "seed": 3666251751,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 2,
+      "failed_tests": 0
+    },
+    {
+      "iteration": 2,
+      "seed": 244424094,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 1,
+      "failed_tests": 0
+    },
+    {
+      "iteration": 3,
+      "seed": 876978655,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -11,24 +27,8 @@
       "failed_tests": 1
     },
     {
-      "iteration": 2,
-      "seed": 218059813,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
-      "iteration": 3,
-      "seed": 1732890947,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
       "iteration": 4,
-      "seed": 754715965,
+      "seed": 756907530,
       "is_bug": false,
       "bugs": [],
       "passed_tests": 1,
@@ -36,7 +36,7 @@
     },
     {
       "iteration": 5,
-      "seed": 3489599264,
+      "seed": 932025631,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -46,7 +46,15 @@
     },
     {
       "iteration": 6,
-      "seed": 2599482094,
+      "seed": 100662165,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 1,
+      "failed_tests": 0
+    },
+    {
+      "iteration": 7,
+      "seed": 2656456342,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -55,24 +63,18 @@
       "failed_tests": 1
     },
     {
-      "iteration": 7,
-      "seed": 1650786899,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
       "iteration": 8,
-      "seed": 1637060899,
-      "is_bug": false,
-      "bugs": [],
+      "seed": 2278648868,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
       "passed_tests": 1,
-      "failed_tests": 0
+      "failed_tests": 1
     },
     {
       "iteration": 9,
-      "seed": 4211742290,
+      "seed": 4207838220,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -82,15 +84,17 @@
     },
     {
       "iteration": 10,
-      "seed": 3300371337,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 2,
-      "failed_tests": 0
+      "seed": 1973567661,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "passed_tests": 1,
+      "failed_tests": 1
     },
     {
       "iteration": 11,
-      "seed": 967535707,
+      "seed": 2814342655,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -100,37 +104,31 @@
     },
     {
       "iteration": 12,
-      "seed": 639053658,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
-      "passed_tests": 1,
-      "failed_tests": 1
+      "seed": 973730622,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 2,
+      "failed_tests": 0
     },
     {
       "iteration": 13,
-      "seed": 3561414907,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
+      "seed": 1141376968,
+      "is_bug": false,
+      "bugs": [],
       "passed_tests": 1,
-      "failed_tests": 1
+      "failed_tests": 0
     },
     {
       "iteration": 14,
-      "seed": 3912109871,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
-      "passed_tests": 1,
-      "failed_tests": 1
+      "seed": 2358933707,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 2,
+      "failed_tests": 0
     },
     {
       "iteration": 15,
-      "seed": 763670395,
+      "seed": 3492389069,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -140,7 +138,7 @@
     },
     {
       "iteration": 16,
-      "seed": 1945829877,
+      "seed": 2006624184,
       "is_bug": false,
       "bugs": [],
       "passed_tests": 1,
@@ -148,23 +146,7 @@
     },
     {
       "iteration": 17,
-      "seed": 1374648676,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
-      "iteration": 18,
-      "seed": 3989060938,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
-      "iteration": 19,
-      "seed": 251891010,
+      "seed": 2818825662,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -173,34 +155,60 @@
       "failed_tests": 1
     },
     {
-      "iteration": 20,
-      "seed": 1787007859,
+      "iteration": 18,
+      "seed": 236560244,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "passed_tests": 1,
+      "failed_tests": 1
+    },
+    {
+      "iteration": 19,
+      "seed": 2725432532,
       "is_bug": false,
       "bugs": [],
       "passed_tests": 1,
+      "failed_tests": 0
+    },
+    {
+      "iteration": 20,
+      "seed": 177803832,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 2,
       "failed_tests": 0
     },
     {
       "iteration": 21,
-      "seed": 4054304987,
-      "is_bug": false,
-      "bugs": [],
+      "seed": 3559666941,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
       "passed_tests": 1,
-      "failed_tests": 0
+      "failed_tests": 1
     },
     {
       "iteration": 22,
-      "seed": 3686770121,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
-      "passed_tests": 1,
-      "failed_tests": 1
+      "seed": 2189268725,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 2,
+      "failed_tests": 0
     },
     {
       "iteration": 23,
-      "seed": 3313123753,
+      "seed": 1022316903,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 1,
+      "failed_tests": 0
+    },
+    {
+      "iteration": 24,
+      "seed": 3295355994,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -209,32 +217,28 @@
       "failed_tests": 1
     },
     {
-      "iteration": 24,
-      "seed": 3000726646,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 2,
-      "failed_tests": 0
-    },
-    {
       "iteration": 25,
-      "seed": 72466797,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 2,
-      "failed_tests": 0
+      "seed": 4122615105,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "passed_tests": 1,
+      "failed_tests": 1
     },
     {
       "iteration": 26,
-      "seed": 2963321721,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 2,
-      "failed_tests": 0
+      "seed": 912861185,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "passed_tests": 1,
+      "failed_tests": 1
     },
     {
       "iteration": 27,
-      "seed": 1936809101,
+      "seed": 2662651688,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -244,7 +248,7 @@
     },
     {
       "iteration": 28,
-      "seed": 1346667718,
+      "seed": 3931430118,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -254,17 +258,15 @@
     },
     {
       "iteration": 29,
-      "seed": 170922445,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
+      "seed": 1790443468,
+      "is_bug": false,
+      "bugs": [],
       "passed_tests": 1,
-      "failed_tests": 1
+      "failed_tests": 0
     },
     {
       "iteration": 30,
-      "seed": 2113150882,
+      "seed": 3219909965,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -274,49 +276,41 @@
     },
     {
       "iteration": 31,
-      "seed": 862615559,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
-      "iteration": 32,
-      "seed": 3534171223,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
-      "iteration": 33,
-      "seed": 1062523937,
+      "seed": 4064454749,
       "is_bug": false,
       "bugs": [],
       "passed_tests": 2,
       "failed_tests": 0
     },
     {
-      "iteration": 34,
-      "seed": 1495179567,
+      "iteration": 32,
+      "seed": 4247313506,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 2,
+      "failed_tests": 0
+    },
+    {
+      "iteration": 33,
+      "seed": 1149637346,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
       ],
       "passed_tests": 1,
       "failed_tests": 1
+    },
+    {
+      "iteration": 34,
+      "seed": 4077878855,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 1,
+      "failed_tests": 0
     },
     {
       "iteration": 35,
-      "seed": 513163163,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
-      "iteration": 36,
-      "seed": 3587895355,
+      "seed": 1548330841,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -325,24 +319,36 @@
       "failed_tests": 1
     },
     {
-      "iteration": 37,
-      "seed": 372562874,
+      "iteration": 36,
+      "seed": 1554568295,
       "is_bug": false,
       "bugs": [],
       "passed_tests": 1,
       "failed_tests": 0
+    },
+    {
+      "iteration": 37,
+      "seed": 2442640970,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "passed_tests": 1,
+      "failed_tests": 1
     },
     {
       "iteration": 38,
-      "seed": 2414516247,
-      "is_bug": false,
-      "bugs": [],
+      "seed": 2853082600,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
       "passed_tests": 1,
-      "failed_tests": 0
+      "failed_tests": 1
     },
     {
       "iteration": 39,
-      "seed": 4199376971,
+      "seed": 3278200568,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -352,7 +358,7 @@
     },
     {
       "iteration": 40,
-      "seed": 3380162058,
+      "seed": 2550173285,
       "is_bug": false,
       "bugs": [],
       "passed_tests": 1,
@@ -360,17 +366,15 @@
     },
     {
       "iteration": 41,
-      "seed": 3030756494,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
-      "passed_tests": 1,
-      "failed_tests": 1
+      "seed": 684555692,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 2,
+      "failed_tests": 0
     },
     {
       "iteration": 42,
-      "seed": 3485061792,
+      "seed": 133507272,
       "is_bug": false,
       "bugs": [],
       "passed_tests": 1,
@@ -378,55 +382,7 @@
     },
     {
       "iteration": 43,
-      "seed": 3580107699,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
-      "iteration": 44,
-      "seed": 2558669880,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 2,
-      "failed_tests": 0
-    },
-    {
-      "iteration": 45,
-      "seed": 709810036,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
-      "iteration": 46,
-      "seed": 3056557525,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
-      "iteration": 47,
-      "seed": 2460370280,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
-      "iteration": 48,
-      "seed": 2496297426,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
-      "iteration": 49,
-      "seed": 96857904,
+      "seed": 269734234,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -435,16 +391,72 @@
       "failed_tests": 1
     },
     {
-      "iteration": 50,
-      "seed": 196465157,
+      "iteration": 44,
+      "seed": 3730412516,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "passed_tests": 1,
+      "failed_tests": 1
+    },
+    {
+      "iteration": 45,
+      "seed": 3911410974,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 2,
+      "failed_tests": 0
+    },
+    {
+      "iteration": 46,
+      "seed": 1284497450,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "passed_tests": 1,
+      "failed_tests": 1
+    },
+    {
+      "iteration": 47,
+      "seed": 3038130763,
       "is_bug": false,
       "bugs": [],
       "passed_tests": 1,
       "failed_tests": 0
     },
     {
+      "iteration": 48,
+      "seed": 3153679825,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "passed_tests": 1,
+      "failed_tests": 1
+    },
+    {
+      "iteration": 49,
+      "seed": 2236216722,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 2,
+      "failed_tests": 0
+    },
+    {
+      "iteration": 50,
+      "seed": 1690597152,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "passed_tests": 1,
+      "failed_tests": 1
+    },
+    {
       "iteration": 51,
-      "seed": 3608217832,
+      "seed": 76493574,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -454,15 +466,17 @@
     },
     {
       "iteration": 52,
-      "seed": 2541435910,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 2,
-      "failed_tests": 0
+      "seed": 1714438165,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "passed_tests": 1,
+      "failed_tests": 1
     },
     {
       "iteration": 53,
-      "seed": 3725522752,
+      "seed": 2683377852,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -472,7 +486,7 @@
     },
     {
       "iteration": 54,
-      "seed": 1741818988,
+      "seed": 3589921594,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -482,17 +496,15 @@
     },
     {
       "iteration": 55,
-      "seed": 2613491088,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
+      "seed": 1927736862,
+      "is_bug": false,
+      "bugs": [],
       "passed_tests": 1,
-      "failed_tests": 1
+      "failed_tests": 0
     },
     {
       "iteration": 56,
-      "seed": 3739755878,
+      "seed": 4217930015,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -502,35 +514,23 @@
     },
     {
       "iteration": 57,
-      "seed": 2203912443,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
-      "passed_tests": 1,
-      "failed_tests": 1
-    },
-    {
-      "iteration": 58,
-      "seed": 1651035021,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
-      "passed_tests": 1,
-      "failed_tests": 1
-    },
-    {
-      "iteration": 59,
-      "seed": 290851851,
+      "seed": 363229822,
       "is_bug": false,
       "bugs": [],
       "passed_tests": 1,
       "failed_tests": 0
     },
     {
-      "iteration": 60,
-      "seed": 1056596844,
+      "iteration": 58,
+      "seed": 167833456,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 2,
+      "failed_tests": 0
+    },
+    {
+      "iteration": 59,
+      "seed": 1220624149,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -539,8 +539,16 @@
       "failed_tests": 1
     },
     {
+      "iteration": 60,
+      "seed": 206648031,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 1,
+      "failed_tests": 0
+    },
+    {
       "iteration": 61,
-      "seed": 2958686864,
+      "seed": 3583011341,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -550,15 +558,7 @@
     },
     {
       "iteration": 62,
-      "seed": 3522693880,
-      "is_bug": false,
-      "bugs": [],
-      "passed_tests": 1,
-      "failed_tests": 0
-    },
-    {
-      "iteration": 63,
-      "seed": 2195588458,
+      "seed": 881944975,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -567,24 +567,36 @@
       "failed_tests": 1
     },
     {
-      "iteration": 64,
-      "seed": 4092845546,
+      "iteration": 63,
+      "seed": 2474015007,
       "is_bug": false,
       "bugs": [],
       "passed_tests": 1,
       "failed_tests": 0
+    },
+    {
+      "iteration": 64,
+      "seed": 751349251,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
+      "passed_tests": 1,
+      "failed_tests": 1
     },
     {
       "iteration": 65,
-      "seed": 3546671787,
-      "is_bug": false,
-      "bugs": [],
+      "seed": 1750854621,
+      "is_bug": true,
+      "bugs": [
+        "Reentrancy"
+      ],
       "passed_tests": 1,
-      "failed_tests": 0
+      "failed_tests": 1
     },
     {
       "iteration": 66,
-      "seed": 3486577142,
+      "seed": 187509553,
       "is_bug": false,
       "bugs": [],
       "passed_tests": 1,
@@ -592,7 +604,7 @@
     },
     {
       "iteration": 67,
-      "seed": 3945319050,
+      "seed": 1309639579,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -602,45 +614,39 @@
     },
     {
       "iteration": 68,
-      "seed": 2948195932,
+      "seed": 2821572439,
       "is_bug": false,
       "bugs": [],
-      "passed_tests": 2,
+      "passed_tests": 1,
       "failed_tests": 0
     },
     {
       "iteration": 69,
-      "seed": 2831861091,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
+      "seed": 1694420537,
+      "is_bug": false,
+      "bugs": [],
       "passed_tests": 1,
-      "failed_tests": 1
+      "failed_tests": 0
     },
     {
       "iteration": 70,
-      "seed": 1738731829,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
+      "seed": 4113252732,
+      "is_bug": false,
+      "bugs": [],
       "passed_tests": 1,
-      "failed_tests": 1
+      "failed_tests": 0
     },
     {
       "iteration": 71,
-      "seed": 4141228783,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
+      "seed": 3782722639,
+      "is_bug": false,
+      "bugs": [],
       "passed_tests": 1,
-      "failed_tests": 1
+      "failed_tests": 0
     },
     {
       "iteration": 72,
-      "seed": 1861800698,
+      "seed": 576345866,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -650,7 +656,7 @@
     },
     {
       "iteration": 73,
-      "seed": 2499195513,
+      "seed": 2225474750,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -660,17 +666,15 @@
     },
     {
       "iteration": 74,
-      "seed": 3259410072,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
+      "seed": 1790591741,
+      "is_bug": false,
+      "bugs": [],
       "passed_tests": 1,
-      "failed_tests": 1
+      "failed_tests": 0
     },
     {
       "iteration": 75,
-      "seed": 1181566518,
+      "seed": 21643099,
       "is_bug": false,
       "bugs": [],
       "passed_tests": 1,
@@ -678,15 +682,15 @@
     },
     {
       "iteration": 76,
-      "seed": 674184105,
+      "seed": 45795368,
       "is_bug": false,
       "bugs": [],
-      "passed_tests": 2,
+      "passed_tests": 1,
       "failed_tests": 0
     },
     {
       "iteration": 77,
-      "seed": 1763461455,
+      "seed": 2436524185,
       "is_bug": true,
       "bugs": [
         "Reentrancy"
@@ -696,36 +700,30 @@
     },
     {
       "iteration": 78,
-      "seed": 619246760,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
+      "seed": 4161806665,
+      "is_bug": false,
+      "bugs": [],
       "passed_tests": 1,
-      "failed_tests": 1
+      "failed_tests": 0
     },
     {
       "iteration": 79,
-      "seed": 235796100,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
-      "passed_tests": 1,
-      "failed_tests": 1
+      "seed": 3441133747,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 2,
+      "failed_tests": 0
     },
     {
       "iteration": 80,
-      "seed": 910295007,
-      "is_bug": true,
-      "bugs": [
-        "Reentrancy"
-      ],
-      "passed_tests": 1,
-      "failed_tests": 1
+      "seed": 4061142573,
+      "is_bug": false,
+      "bugs": [],
+      "passed_tests": 2,
+      "failed_tests": 0
     }
   ],
-  "total_bugs": 42,
-  "start": "2026-06-03T16:48:03.492807",
-  "end": "2026-06-03T16:49:51.454205"
+  "total_bugs": 41,
+  "start": "2026-06-03T20:54:57.748457",
+  "end": "2026-06-03T20:56:42.517719"
 }
